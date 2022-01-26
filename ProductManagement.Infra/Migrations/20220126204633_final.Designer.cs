@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductManagement.Infra.Persistence;
 
@@ -11,9 +12,10 @@ using ProductManagement.Infra.Persistence;
 namespace ProductManagement.Infra.Migrations
 {
     [DbContext(typeof(ProductManagementContext))]
-    partial class ProductManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20220126204633_final")]
+    partial class final
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

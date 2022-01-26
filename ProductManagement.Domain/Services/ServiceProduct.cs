@@ -25,8 +25,8 @@ namespace ProductManagement.Domain.Services
         public ResponseBase Delete(Guid id)
         {
             var product = _repositoryProduct.GetById(id);
-            if (product == null)
-                return null;
+            if (product == null) return null;
+
             _repositoryProduct.Delete(product);
             _repositoryProduct.Save();
             return new ResponseBase();

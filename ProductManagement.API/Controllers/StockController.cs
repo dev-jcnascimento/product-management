@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ProductManagement.Domain.Arguments.Stock;
 using ProductManagement.Domain.Interface.IServices;
 
 namespace ProductManagement.Api.Controllers
 {
     [ApiController]
-    [Route("v1/stock")]
+    [Route("v1/stocks")]
     public class StockController : ControllerBase
     {
         private readonly IServiceStock _serviceStock;
@@ -28,8 +29,6 @@ namespace ProductManagement.Api.Controllers
             {
                 return NotFound(new { message = "Id's não encontrados!" });
             }
-           
-
             return Ok(response);
         }
         [HttpPost]
@@ -54,36 +53,30 @@ namespace ProductManagement.Api.Controllers
 
         [HttpDelete]
         [Authorize(Roles = "Admin,Employee")]
-        public async Task<ActionResult> DeleteAsync(Guid id)
+        public async Task<ActionResult> DeleteAsync([BindRequired, FromQuery] Guid id)
         {
             var stock = _serviceStock.Delete(id);
 
-            if (stock == null)
-                return NotFound(new { message = "Id não Encontrado!" });
-
+            if (stock == null) return NotFound(new { message = "Id não Encontrado!" });
             return NoContent();
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public async Task<ActionResult> GetByIdAsyn(Guid id)
+        [Route("stock_id")]
+        public async Task<ActionResult> GetByIdAsyn([BindRequired, FromQuery] Guid id)
         {
             var response = _serviceStock.GetById(id);
 
-            if (response == null)
-                return NotFound(new { message = "Lançamento não Encontrado!" });
-
+            if (response == null) return NotFound(new { message = "Lançamento não encontrado!" });
             return Ok(response);
         }
         [HttpGet]
-        [Route("current_inventory")]
-        public async Task<ActionResult> GetStockProductAsync(Guid id)
+        [Route("product_inventory_id")]
+        public async Task<ActionResult> GetStockProductAsync([BindRequired, FromQuery] Guid id)
         {
             var response = _serviceStock.GetStockProduct(id);
 
-            if (response == null)
-                return NotFound(new { message = "Não Encontrado!" });
-
+            if (response == null) return NotFound(new { message = "Id produto não encontrado!" });
             return Ok(response);
         }
 
@@ -108,17 +101,23 @@ namespace ProductManagement.Api.Controllers
             return Ok(response);
         }
         [HttpGet]
-        [Route("produto")]
-        public async Task<ActionResult> ListByProductAsync(Guid id)
+        [Route("product_id")]
+        public async Task<ActionResult> ListByProductAsync([BindRequired, FromQuery] Guid id)
         {
             var response = _serviceStock.ListByProduct(id);
+
+            if (response == null) return BadRequest(new { message = "Id produto não encontrado!" });
+            if (response.Count() == 0) return NoContent();
             return Ok(response);
         }
         [HttpGet]
-        [Route("user")]
-        public async Task<ActionResult> ListByUserAsync(Guid id)
+        [Route("user_id")]
+        public async Task<ActionResult> ListByUserAsync([BindRequired, FromQuery] Guid id)
         {
             var response = _serviceStock.ListByUser(id);
+
+            if (response == null) return BadRequest(new { message = "Id user não encontrado!" });
+            if (response.Count() == 0) return NoContent();
             return Ok(response);
         }
     }

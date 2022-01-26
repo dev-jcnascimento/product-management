@@ -41,6 +41,7 @@ namespace ProductManagement.Domain.Services
             if (user == null)
                 return null;
              _repositoryUser.Delete(user);
+            _repositoryUser.Save();
             return new ResponseBase();
         }
 
@@ -52,7 +53,7 @@ namespace ProductManagement.Domain.Services
         public UpdateUserResponse Update(UpdateUserRequest request)
         {
             User user = _repositoryUser.GetById(request.Id);
-            if (user == null) return new UpdateUserResponse();
+            if (user == null) return null;
 
             var name = new Name(request.FistName, request.LastName);
             var email = new Email(request.Email);

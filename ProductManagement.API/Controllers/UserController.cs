@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ProductManagement.Domain.Arguments.User;
 using ProductManagement.Domain.Interface.IServices;
 
@@ -18,11 +19,9 @@ namespace ProductManagement.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateAsync(CreateUserRequest request)
         {
-            if (request == null)
-                return BadRequest(new { message = "Cadastro não pode ser vazio!" });
+            if (request == null) return BadRequest(new { message = "Cadastro não pode ser vazio!" });
 
             var response = _serviceUser.Create(request);
-
             return Ok(response);
         }
 
@@ -34,25 +33,22 @@ namespace ProductManagement.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public async Task<ActionResult> GetByIdAsyn(Guid id)
+        [Route("user_id")]
+        public async Task<ActionResult> GetByIdAsyn([BindRequired, FromQuery] Guid id)
         {
             var response = _serviceUser.GetById(id);
 
-            if (response == null)
-                return NotFound(new { message = "User não Encontrado!" });
-
+            if (response == null) return NotFound(new { message = "User não Encontrado!" });
             return Ok(response);
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateAsyn(UpdateUserRequest request)
         {
             var response = _serviceUser.Update(request);
 
-            if (response == null)
-                return NotFound(new { message = "User não Encontrado!" });
-
+            if (response == null) return NotFound(new { message = "User não Encontrado!" });
             return Ok(response);
         }
 
@@ -62,21 +58,17 @@ namespace ProductManagement.Api.Controllers
         {
             var response = _serviceUser.UpdateAdmin(request.Id, request.Role);
 
-            if (response == null)
-                return NotFound(new { message = "User não Encontrado!" });
-
+            if (response == null) return NotFound(new { message = "User não Encontrado!" });
             return Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<ActionResult> Delete([BindRequired, FromQuery] Guid id)
         { 
             var user = _serviceUser.Delete(id);
 
-            if (user == null)
-                return NotFound(new { message = "Id não Encontrado!" });
-
+            if (user == null) return NotFound(new { message = "Id não Encontrado!" });
             return NoContent();
         }
     }
