@@ -15,3 +15,6 @@ Agora, execute o update do banco de dados:
 >
 Depois, execute o comando para rodar o projeto:
 >dotnet run --project ./ProductManagement.API
+
+Para ter acesso aos endpoints criados, acesse no navegador:
+>https://localhost:7238/Swagger
