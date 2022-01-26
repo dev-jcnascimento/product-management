@@ -19,7 +19,6 @@ builder.Services.AddControllers();
 builder.Services.AddMvc();
 builder.Services.AddDbContext<ProductManagementContext>(options =>
                     options.UseSqlServer(builder.Configuration.GetConnectionString("PMContext")));
-//builder.Services.AddScoped<ProductManagementContext>();
 
 builder.Services.AddScoped<IRepositoryUser, RepositoryUser>();
 builder.Services.AddScoped<IRepositoryProduct, RepositoryProduct>();

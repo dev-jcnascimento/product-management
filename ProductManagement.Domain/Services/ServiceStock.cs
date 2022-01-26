@@ -43,7 +43,7 @@ namespace ProductManagement.Domain.Services
             }
             int stockProduct = _repositoryStock.GetStockProduct(request.ProductId);
             stockProduct -= request.Value;
-            if (stockProduct <= 0)
+            if (stockProduct < 0)
             {
                 return new CreateStockResponse();
             }

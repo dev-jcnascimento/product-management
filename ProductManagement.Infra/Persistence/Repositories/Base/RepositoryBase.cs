@@ -8,9 +8,9 @@ namespace ProductManagement.Infra.Persistence.Repositories.Base
         where TEntidade : EntityBase
         where TId : struct
     {
-        protected readonly ProductManagementContext _context;
+        protected readonly DbContext _context;
 
-        public RepositoryBase(ProductManagementContext context)
+        public RepositoryBase(DbContext context)
         {
             _context = context;
         }

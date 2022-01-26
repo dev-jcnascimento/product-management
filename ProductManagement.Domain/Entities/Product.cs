@@ -29,9 +29,9 @@ namespace ProductManagement.Domain.Entities
         }
         private void ValidatingName(string name)
         {
-            if (string.IsNullOrEmpty(name) || name.Length > 30)
+            if (string.IsNullOrEmpty(name) || name.Length > 100)
             {
-                throw new Exception("Name cannot be empty and cannot be shorter than 30 characters.");
+                throw new Exception("Name cannot be empty and cannot be shorter than 100 characters.");
             }
             Name = name;
         }

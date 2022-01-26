@@ -15,7 +15,7 @@ namespace ProductManagement.Infra.Persistence.Repositories
         }
         public int GetStockProduct(Guid id)
         {
-            var teste = _productManagementContext.Set<Stock>();
+            var teste = _context.Set<Stock>();
             IEnumerable<Stock> stockProduct = teste.Where(x => x.ProductId == id).ToList();
             int inStock = 0;
             int outStock = 0;

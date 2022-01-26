@@ -16,8 +16,8 @@ namespace ProductManagement.Infra.Persistence.Map
             });
             builder.OwnsOne(x => x.Nome, name =>
             {
-                name.Property(x => x.FistName).HasColumnName("FistName").IsRequired().HasColumnType("varchar(50)");
-                name.Property(x => x.LastName).HasColumnName("LastName").IsRequired().HasColumnType("varchar(50)");
+                name.Property(x => x.FistName).HasColumnName("FistName").IsRequired().HasColumnType("varchar(100)");
+                name.Property(x => x.LastName).HasColumnName("LastName").IsRequired().HasColumnType("varchar(100)");
             });
             builder.OwnsOne(x => x.Password, password =>
             {

@@ -2,7 +2,7 @@
 
 namespace ProductManagement.Domain.Arguments.Product
 {
-    public class ProductResponse : ResponseBase
+    public class ProductResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -17,7 +17,7 @@ namespace ProductManagement.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<dynamic>> AuthenticateAsync(AuthenticateUserRequest request)
+        public async Task<ActionResult> AuthenticateAsync(AuthenticateUserRequest request)
         {
             var response = _serviceUser.Authenticate(request);
 

@@ -2,7 +2,7 @@
 
 namespace ProductManagement.Domain.Arguments.User
 {
-    public class UserResponse : ResponseBase
+    public class UserResponse 
     {
         public Guid Id { get; set; }
         public string NomeCompleto { get; set; }

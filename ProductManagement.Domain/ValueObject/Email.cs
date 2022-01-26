@@ -1,13 +1,11 @@
 ﻿namespace ProductManagement.Domain.ValueObject
 {
-
     public class Email
     {
         public string Webmail { get; private set; }
         protected Email()
         {
         }
-
         public Email(string webmail)
         {
             if (string.IsNullOrEmpty(webmail))
