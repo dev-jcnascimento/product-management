@@ -18,3 +18,6 @@ Depois, execute o comando para rodar o projeto:
 
 Para ter acesso aos endpoints criados, acesse no navegador:
 >https://localhost:7238/Swagger
+
+Para ter acesso aos endpoints criados no Postman, utilize o link para importar:
+>https://www.getpostman.com/collections/c61bec482dfeec66c68c
