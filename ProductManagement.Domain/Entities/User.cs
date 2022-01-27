@@ -17,11 +17,6 @@ namespace ProductManagement.Domain.Entities
         {
         }
         [JsonConstructor]
-        public User(Email email, Password password)
-        {
-            Email = email;
-            Password = password;
-        }
         public User(Name nome, Email email, Password password, [Optional] Roles role)
         {
             Nome = nome;

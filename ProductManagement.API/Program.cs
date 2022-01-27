@@ -57,6 +57,7 @@ builder.Services.AddSwaggerGen(c =>
  });
 });
 builder.Services.AddCors();
+
 // Add Authentication
 #region Add Authentication
 
@@ -88,6 +89,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    DbInitializer.Initialize(app);
 }
 
 app.UseHttpsRedirection();

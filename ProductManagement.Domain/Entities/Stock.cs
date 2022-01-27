@@ -1,6 +1,7 @@
 ﻿using ProductManagement.Domain.Entities.Base;
 using ProductManagement.Domain.Enum;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace ProductManagement.Domain.Entities
 {
