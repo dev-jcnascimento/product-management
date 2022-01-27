@@ -40,8 +40,6 @@ public static class DbInitializer
             var product2 = new Product("Product Teste2", "Breve Descrição do Produto Teste 2", "Modelo Teste 2", "Marca Teste 2");
             var product3 = new Product("Product Teste3", "Breve Descrição do Produto Teste 3", "Modelo Teste 3", "Marca Teste 3");
 
-
-
             var stock1 = new Stock(product1.Id, 7, StatusStock.Entrada, user2.Id);
             var stock2 = new Stock(product1.Id, 9, StatusStock.Entrada, user2.Id);
             var stock3 = new Stock(product1.Id, 5, StatusStock.Entrada, user1.Id);
@@ -49,8 +47,9 @@ public static class DbInitializer
             var stock5 = new Stock(product1.Id, 15, StatusStock.Saida, user1.Id);
             var stock6 = new Stock(product1.Id, 8, StatusStock.Saida, user2.Id);
             var stock7 = new Stock(product2.Id, 2, StatusStock.Entrada, user1.Id);
+
             context.AddRangeAsync(user1, user2, user3, product1, product2, product3,
-                stock1, stock2, stock3, stock4, stock5, stock6, stock7);
+                                  stock1, stock2, stock3, stock4, stock5, stock6, stock7);
             context.SaveChanges();
         }
     }
