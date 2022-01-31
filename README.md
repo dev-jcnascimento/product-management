@@ -3,7 +3,7 @@ Trata-se de uma API para Cadastro de Produtos e Gestão de Estoque desenvolvida 
 **.NET 6**<br>
 utilizando:<br> 
 *Entity Framework Core*,<br>
-*Sql Server*,<br>
+*SQL Server*,<br>
 *JWT Bearer*.<br>
 
 A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, DRY e SOLID.
