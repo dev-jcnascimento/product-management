@@ -10,6 +10,11 @@ A API foi elaborada tendo como objetivo, aplicar conceitos e princípios: REST, 
 
 Ao rodar pela primeira vez a aplicação e o banco de dados estiver vazio, ela vai realizar uma persistência de dados inicial, para visualização e testes.
 
+Usuário de Teste Admin:
+
+E-mail: teste1@teste1.com.br<br>
+Senha: 123456
+
 ## COMO RODAR O PROJETO
 ### BANCO DE DADOS
 Foi usado o banco de dados SQL Server. Antes de rodar o projeto, é necessário executar o comando:
