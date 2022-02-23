@@ -1,4 +1,4 @@
-# SOBRE O PROJETO
+## SOBRE O PROJETO
 Trata-se de uma API para Cadastro de Produtos e Gestão de Estoque desenvolvida em:<br>
 **.NET 6**<br>
 utilizando:<br> 
